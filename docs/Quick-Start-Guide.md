@@ -167,7 +167,7 @@ If you encounter any issues during setup, consider the following tips:
 
 - Ensure your Mac meets the system requirements for running jBPM.
 - Verify that you’ve correctly entered the filesystem path when importing the project.
-- If problems persist, consult the jBPM [documentation](https://www.jbpm.org/documentation.html) or reach out for support.
+- If problems persist, consult the jBPM [documentation](https://docs.jbpm.org/7.74.1.Final/jbpm-docs/html_single/) or reach out for support.
 
 ---
 
