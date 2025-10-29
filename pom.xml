@@ -55,11 +55,10 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.kie</groupId>
-      <artifactId>kie-api</artifactId>
-      <version>${version.org.kie}</version>
-      <scope>provided</scope>
-    </dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-workitems-rest</artifactId>
+      <version>7.74.1.Final</version>
+  </dependency>
     <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-internal</artifactId>
