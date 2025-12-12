@@ -9,10 +9,12 @@
   <packaging>kjar</packaging>
   <name>perfi00.jbpm_fulfillment_app</name>
   <description></description>
+
   <organization>
     <name>Kibo Software</name>
     <url>http://www.kibocommerce.com</url>
   </organization>
+
   <developers>
     <developer>
       <id>kibocommerce.com</id>
@@ -21,42 +23,43 @@
       <organizationUrl>http://www.kibocommerce.com</organizationUrl>
     </developer>
   </developers>
+
   <properties>
+    <version.org.kie>7.26.0.Final</version.org.kie>
+    <java.version>8</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
-    <sonar.projectName>Kibo.FulfillmentWorkflows</sonar.projectName>
-    <kotlin.version>1.5.10</kotlin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-    <sonar.login>${env.SONAR_LOGIN}</sonar.login>
+    <jackson.version>2.9.7</jackson.version>
+    <kotlin.version>1.5.10</kotlin.version>
+    <jacocoOutputDirectory>${project.build.directory}/jacoco-aggregate</jacocoOutputDirectory>
+    <sonar.organization>kibo-ucp</sonar.organization>
+    <sonar.projectName>Kibo.FulfillmentWorkflows</sonar.projectName>
     <sonar.projectVersion>${project.version}</sonar.projectVersion>
     <sonar.scm.disabled>true</sonar.scm.disabled>
     <sonar.scm.provider>git</sonar.scm.provider>
     <sonar.sources>${project.build.sourceDirectory}</sonar.sources>
-    <!--sonar.tests>${project.build.testSourceDirectory}</sonar.tests-->
+    <sonar.tests>${project.build.testSourceDirectory}</sonar.tests>
     <sonar.language>java</sonar.language>
     <sonar.java.source>${java.version}</sonar.java.source>
-    <jackson.version>2.9.7</jackson.version>
-    <version.org.kie>7.26.0.Final</version.org.kie>
-    <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
-    <sonar.exclusions>**/*.xml, **/*Test.*</sonar.exclusions>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <sonar.tests>${project.build.testSourceDirectory}</sonar.tests>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jacocoOutputDirectory>${project.build.directory}/jacoco-aggregate</jacocoOutputDirectory>
     <sonar.coverage.jacoco.xmlReportPaths>${jacocoOutputDirectory}/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-    <sonar.coverage.exclusions>${sonar.tests}/**/*</sonar.coverage.exclusions>
-    <sonar.language>java</sonar.language>
-    <java.version>8</java.version>
-    <sonar.organization>kibo-ucp</sonar.organization>
-    <sonar.sources>${project.build.sourceDirectory}</sonar.sources>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <sonar.scm.provider>git</sonar.scm.provider>
-    <sonar.scm.disabled>true</sonar.scm.disabled>
+    <sonar.exclusions>**/*.xml, **/*Test.*</sonar.exclusions>
+    <sonar.coverage.exclusions>
+      ${sonar.tests}/**/*
+    </sonar.coverage.exclusions>
+    <!--suppress UnresolvedMavenProperty -->
+    <sonar.login>${env.SONAR_LOGIN}</sonar.login>
   </properties>
+
   <dependencies>
     <dependency>
-      <groupId>org.jbpm</groupId>
-      <artifactId>jbpm-workitems-rest</artifactId>
-      <version>7.74.1.Final</version>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-api</artifactId>
+      <version>${version.org.kie}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.kie</groupId>
@@ -101,6 +104,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -110,18 +114,20 @@
         <extensions>true</extensions>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
+        <configuration>
+          <release>${java.version}</release>
+        </configuration>
         <executions>
           <execution>
             <id>compile</id>
           </execution>
         </executions>
-        <configuration>
-          <release>${java.version}</release>
-        </configuration>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.2.0</version>
         <configuration>
@@ -160,6 +166,12 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.9</version>
+        <configuration>
+          <excludes>
+            <exclude>**/*Test*</exclude>
+          </excludes>
+          <outputDirectory>${jacocoOutputDirectory}</outputDirectory>
+        </configuration>
         <executions>
           <execution>
             <id>prepare-agent</id>
@@ -180,12 +192,6 @@
             </configuration>
           </execution>
         </executions>
-        <configuration>
-          <excludes>
-            <exclude>**/*Test*</exclude>
-          </excludes>
-          <outputDirectory>${jacocoOutputDirectory}</outputDirectory>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.sonarsource.scanner.maven</groupId>
@@ -194,29 +200,24 @@
       </plugin>
     </plugins>
   </build>
+
   <profiles>
     <profile>
-      <id>ignorebpmtests</id>
-      <properties>
-        <skipTests>true</skipTests>
-        <maven.test.skip>true</maven.test.skip>
-        <maven.test.failure.ignore>true</maven.test.failure.ignore>
-      </properties>
-    </profile>
-    <profile>
       <id>nexus-deploy</id>
-      <activation />
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
       <distributionManagement>
-        <repository>
-          <id>kibo-businessautomation-releases</id>
-          <name>Kibo BusinessAutomation Releases</name>
-          <url>https://nexus.kibo-dev-ext.com/repository/kibo-businessautomation-releases</url>
-        </repository>
         <snapshotRepository>
           <id>kibo-businessautomation-snapshots</id>
           <name>Kibo BusinessAutomation Snapshots</name>
           <url>https://nexus.kibo-dev-ext.com/repository/kibo-businessautomation-snapshots</url>
         </snapshotRepository>
+        <repository>
+          <id>kibo-businessautomation-releases</id>
+          <name>Kibo BusinessAutomation Releases</name>
+          <url>https://nexus.kibo-dev-ext.com/repository/kibo-businessautomation-releases</url>
+        </repository>
       </distributionManagement>
     </profile>
     <profile>
@@ -226,18 +227,11 @@
           <name>devcenter</name>
         </property>
       </activation>
-      <properties>
-        <devcenterAssetsDirectory>${project.basedir}/devcenter-app/assets</devcenterAssetsDirectory>
-        <skipTests>true</skipTests>
-        <maven.test.skip>true</maven.test.skip>
-        <maven.test.failure.ignore>true</maven.test.failure.ignore>
-      </properties>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
-            <version>3.1.2</version>
+            <version>${maven-dependency-plugin.version}</version>
             <executions>
               <execution>
                 <id>copy-assets</id>
@@ -262,6 +256,9 @@
           </plugin>
         </plugins>
       </build>
+      <properties>
+        <devcenterAssetsDirectory>${project.basedir}/devcenter-app/assets</devcenterAssetsDirectory>
+      </properties>
     </profile>
   </profiles>
 </project>
