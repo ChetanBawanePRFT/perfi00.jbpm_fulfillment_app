@@ -124,9 +124,9 @@
   <bpmn2:signal id="_-123173735" name="canceled"/>
   <bpmn2:signal id="_-123173735" name="canceled"/>
   <bpmn2:collaboration id="_8C2AC36C-5E68-4E31-B12E-D71B618648F1" name="Default Collaboration">
-    <bpmn2:participant id="_D0DFAF89-00F4-42D6-93A0-81E638CD2BE5" name="Pool Participant" processRef="fulfillment.FulfillmentProcess_BOPIS"/>
+    <bpmn2:participant id="_D0DFAF89-00F4-42D6-93A0-81E638CD2BE5" name="Pool Participant" processRef="TWM_BOPIS_Fulfilment_Workflow"/>
   </bpmn2:collaboration>
-  <bpmn2:process id="fulfillment.FulfillmentProcess_BOPIS" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2324.0" drools:adHoc="false" name="BOPIS Default" isExecutable="true" processType="Public">
+  <bpmn2:process id="TWM_BOPIS_Fulfilment_Workflow" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2324.0" drools:adHoc="false" name="BOPIS Default" isExecutable="true" processType="Public">
     <bpmn2:documentation><![CDATA[BOPIS Default]]></bpmn2:documentation>
     <bpmn2:extensionElements>
       <drools:metaData name="customDescription">
@@ -1305,7 +1305,7 @@ System.out.println(kcontext.getVariable("currentState"));</bpmn2:script>
     </bpmn2:boundaryEvent>
   </bpmn2:process>
   <bpmndi:BPMNDiagram>
-    <bpmndi:BPMNPlane bpmnElement="fulfillment.FulfillmentProcess_BOPIS">
+    <bpmndi:BPMNPlane bpmnElement="TWM_BOPIS_Fulfilment_Workflow">
       <bpmndi:BPMNShape id="shape__4386F2C9-548D-4214-87B9-439ECD9098F3" bpmnElement="_4386F2C9-548D-4214-87B9-439ECD9098F3" isExpanded="true">
         <dc:Bounds height="188" width="401.33337000000006" x="1500" y="384"/>
       </bpmndi:BPMNShape>
