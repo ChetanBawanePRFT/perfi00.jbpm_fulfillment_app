@@ -128,14 +128,14 @@
   <bpmn2:itemDefinition id="__FCB5D322-AF4B-4405-8AFC-9490F674BCBF_NotCompletedNotifyInputXItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__FCB5D322-AF4B-4405-8AFC-9490F674BCBF_pickingStopOutputXItem" structureRef="Boolean"/>
   <bpmn2:signal id="_-2144145710" name="customer_care"/>
-  <bpmn2:signal id="_-123173735" name="canceled"/>
+  <bpmn2:signal id="_-1231737351" name="canceled"/>
   <bpmn2:signal id="_-988477312" name="picked"/>
   <bpmn2:signal id="_1740393771" name="wait_for_transfer"/>
   <bpmn2:signal id="_1505354495" name="ready_for_prep"/>
   <bpmn2:signal id="_-1839765217" name="fulfilled"/>
-  <bpmn2:signal id="_-608496514" name="rejected"/>
-  <bpmn2:signal id="_-123173735" name="canceled"/>
-  <bpmn2:signal id="_-123173735" name="canceled"/>
+  <bpmn2:signal id="_-6084965141" name="rejected"/>
+  <bpmn2:signal id="_-1231737352" name="canceled"/>
+  <bpmn2:signal id="_-1231737353" name="canceled"/>
   <bpmn2:signal id="_-608496514" name="rejected"/>
   <bpmn2:signal id="_-123173735" name="canceled"/>
   <bpmn2:collaboration id="_38C8AF27-F73E-43A9-A48A-05D6508326F1" name="Default Collaboration">
@@ -456,7 +456,7 @@ System.out.println(kcontext.getVariable("currentState"));</bpmn2:script>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_35573E77-C107-468A-B8C0-E2E1A72586ED</bpmn2:incoming>
-      <bpmn2:signalEventDefinition signalRef="_-123173735"/>
+      <bpmn2:signalEventDefinition signalRef="_-1231737351"/>
     </bpmn2:endEvent>
     <bpmn2:scriptTask id="_5E8DEC47-842C-4F32-94C3-E81312C43A7F" name="Ready for Pickup" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
@@ -589,7 +589,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_C0A00245-1C2E-4EA0-B741-B0E84676BE66</bpmn2:incoming>
       <bpmn2:outgoing>_26C52667-311E-49E9-B8D8-13CA5946A643</bpmn2:outgoing>
-      <bpmn2:signalEventDefinition signalRef="_-608496514"/>
+      <bpmn2:signalEventDefinition signalRef="_-6084965141"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:exclusiveGateway id="_F3443644-0474-4D35-9424-140B15678DE9" drools:dg="_375F3BBE-32AA-4F8F-8C2C-EB0F2E6288D3" gatewayDirection="Converging" default="_375F3BBE-32AA-4F8F-8C2C-EB0F2E6288D3">
       <bpmn2:incoming>_80482104-E360-4418-B706-77D748259BED</bpmn2:incoming>
@@ -805,7 +805,7 @@ System.out.println(kcontext.getVariable("currentState"));</bpmn2:script>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_D552EB47-36C2-4F82-90E7-8BE2394C3EB5</bpmn2:incoming>
-      <bpmn2:signalEventDefinition signalRef="_-123173735"/>
+      <bpmn2:signalEventDefinition signalRef="_-1231737352"/>
     </bpmn2:endEvent>
     <bpmn2:endEvent id="_140CE839-6C47-41BC-8009-EB8C12EF536F" name="Stop">
       <bpmn2:extensionElements>
@@ -817,7 +817,7 @@ System.out.println(kcontext.getVariable("currentState"));</bpmn2:script>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_46030A22-1E06-4694-819E-17B434E8B2DA</bpmn2:incoming>
-      <bpmn2:signalEventDefinition signalRef="_-123173735"/>
+      <bpmn2:signalEventDefinition signalRef="_-1231737353"/>
     </bpmn2:endEvent>
     <bpmn2:userTask id="_ADB413FE-EB48-4001-BEEF-F67EDCB4DD64" name="Unclaimed">
       <bpmn2:extensionElements>
