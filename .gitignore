@@ -23,6 +23,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/---
+/devcenter-app/assets/
 
 ### Process ID Files (e.g. docker.pid) ###
 *.pid
