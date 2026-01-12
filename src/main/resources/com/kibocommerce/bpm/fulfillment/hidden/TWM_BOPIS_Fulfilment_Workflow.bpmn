@@ -148,8 +148,8 @@
   <bpmn2:signal id="_6d8040b0-475e-361c-b6ed-12bb52fa30a8" name="wait_for_transfer"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:signal id="_d5c39a1d-9ace-3393-b835-f334a1fb9206" name="canceled"/>
+  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd451" name="rejected"/>
+  <bpmn2:signal id="_d5c39a1d-9ace-3393-b835-f334a1fb92061" name="canceled"/>
   <bpmn2:signal id="_646ccba7-0787-323d-bcb6-01e92bd4b9c7" name="ready_for_prep"/>
   <bpmn2:process id="TWM_BOPIS_Fulfilment_Workflow" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2324.0" drools:adHoc="false" name="TWM BOPIS Custom" isExecutable="true" processType="Public">
     <bpmn2:documentation id="_t2XlAe1FEfCOZ8TgsTUfMA"><![CDATA[TWM BOPIS Custom]]></bpmn2:documentation>
@@ -864,7 +864,7 @@ Required?]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_C5D9B5EA-8821-4939-B0C5-1E7233BFC54E</bpmn2:incoming>
-      <bpmn2:signalEventDefinition id="_t2XlYu1FEfCOZ8TgsTUfMA" signalRef="_c7537d6d-48ec-3261-b49c-09a9f284bd45"/>
+      <bpmn2:signalEventDefinition id="_t2XlYu1FEfCOZ8TgsTUfMA" signalRef="_c7537d6d-48ec-3261-b49c-09a9f284bd451"/>
     </bpmn2:endEvent>
     <bpmn2:exclusiveGateway id="_B0A43A9A-963C-4D5D-A82F-1C66D539CB3A" gatewayDirection="Converging">
       <bpmn2:incoming>_F21428DC-003B-4BA2-9BF9-3391752871CD</bpmn2:incoming>
@@ -1330,7 +1330,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
           </drools:metaData>
         </bpmn2:extensionElements>
         <bpmn2:outgoing>_55109479-9033-466F-A138-2A4893C918E5</bpmn2:outgoing>
-        <bpmn2:signalEventDefinition id="_t2Xl1-1FEfCOZ8TgsTUfMA" signalRef="_d5c39a1d-9ace-3393-b835-f334a1fb9206"/>
+        <bpmn2:signalEventDefinition id="_t2Xl1-1FEfCOZ8TgsTUfMA" signalRef="_d5c39a1d-9ace-3393-b835-f334a1fb92061"/>
       </bpmn2:startEvent>
       <bpmn2:scriptTask id="_B6AC56A8-4D71-44A5-8BE3-16EB9DBF632C" name="Canceled" scriptFormat="http://www.java.com/java">
         <bpmn2:extensionElements>
